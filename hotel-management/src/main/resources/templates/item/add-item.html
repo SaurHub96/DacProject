@@ -1,0 +1,16 @@
+<form id="add-item-form" method="post" data-url="/item" onsubmit="return false;">
+	  <div class="container">
+	  	<input th:if="${item.itemId!=null}" type="hidden" name="itemId"  required th:value="${item.itemId}">
+	    <label for="itemName"><b>Item Name</b></label>
+	    <input type="text" placeholder="Enter Item Name" name="itemName" required th:value="${item.itemName!=null?item.itemName:''}">
+	    <label for="price"><b>Price</b></label>
+	    <input type="number" placeholder="Enter Item Name" name="price" required th:value="${item.price!=0?item.price:0}">
+	    
+	    <button type="submit" class="submitBtn" id="add-item-form-submit">Save Item</button>
+	 
+	  </div>
+	
+	  <div class="container" style="background-color:#f1f1f1">
+	     <a id="cancle-add-room" class="signUpbtn" href="">cancle</a>
+	  </div>
+</form>

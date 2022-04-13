@@ -1,0 +1,15 @@
+<tr  th:each="emp : ${emps}">
+	<td th:text="${emp.empId}"></td>
+	<td th:text="${emp.name}"></td>
+	<td th:text="${emp.gender}"></td>
+	<td th:text="${emp.phone}"></td>
+	<td th:text="${emp.email}"></td>
+	<td th:text="${emp.postCode}"></td>
+	<td th:text="${emp.country}"></td>
+	<td th:text="${emp.idProofType}"></td>
+	<td th:text="${emp.idNumber}"></td>
+	<td th:text="${emp.address}"></td>
+	<td th:text="${emp.reception!=null?'RECETION':'EMPLOYEE'}"></td>
+	<td><button th:data-emp-id="${emp.empId}" class="edit-emp">Edit</button></td>
+	<td><button th:data-emp-id="${emp.empId}" class="delete-emp">Delete</button></td>
+</tr>

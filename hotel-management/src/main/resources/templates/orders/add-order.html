@@ -1,0 +1,34 @@
+<form id="add-orders-form" method="post" data-url="/orders" onsubmit="return false;">
+	  <div class="container">
+	  	<input th:if="${order!=null}" type="hidden" name="orderId"  required th:value="${order.orderId}">
+	  	<input type="hidden" name="bookingId"  required th:value="${booking.bookingId}">
+	    <label for="itemId"><b>Item Name</b></label>
+	    <select name="itemId" id="add-orders-form-item">
+	    	<option th:each="item : ${items}" th:value="${item.itemId}" th:data-price="${item.price}" th:text="${item.itemName}" ></option>
+	    </select>
+	    
+	    <label for="itemPrice" ><b>Item Price</b></label>
+	    <input type="number" th:value="${order!=null?order.orderItem.price:items.get(0).price}" id="add-orders-form-item-price" readonly="readonly">
+	    
+	    <label for="count"><b>Count</b></label>
+	    <input type="number" placeholder="Enter Count" name="count" required th:value="${order!=null?order.count:1}" id="add-orders-form-item-count" min="1" max="10">
+	    
+	    <label for="amount"><b>Total Amount</b></label>
+	    <input type="number" th:value="${order!=null?order.amount:0}" id="add-orders-form-item-total" readonly="readonly">
+	    
+	    <label for="empId"><b>Employee Name</b></label>
+	    <select name="empId" id="add-orders-form-item">
+	    	<option th:each="emp : ${emps}" th:value="${emp.empId}"  th:text="${emp.name}" ></option>
+	    </select>
+	    
+	    <label for="remark"><b>Any Remark</b></label>
+	    <input type="text" placeholder="Enter Remark" name="remark" th:value="${order!=null?order.remark:''}">
+	    
+	    <button type="submit" class="submitBtn" id="add-orders-form-submit">Save Item</button>
+	 
+	  </div>
+	
+	  <div class="container" style="background-color:#f1f1f1">
+	     <a class="signUpbtn" href="">cancle</a>
+	  </div>
+</form>

@@ -1,0 +1,21 @@
+<form id="add-room-form" method="post" data-url="/room" onsubmit="return false;">
+	  <div class="container">
+	  	<label for="roomNumber"><b>Room Number</b></label>
+	    <input type="number" placeholder="Enter room number" name="roomNumber"  required th:value="${room.roomNumber!=0?room.roomNumber:''}" th:readonly="${room.roomNumber!=0?'disabled':'false'}">
+	    <label for="floorNumber"><b>Floor Number</b></label>
+	    <input type="number" placeholder="Enter floor number" name="floorNumber" required th:value="${room.floorNumber!=0?room.floorNumber:''}">
+	    <label for="roomType"><b>Room Type</b></label>
+	    <select name="roomType" th:value="${room.roomType}">
+            <option  th:each="roomType : ${roomTypes}" th:text="${roomType}" th:value="${roomType}" th:selected="${room.roomType==roomType?'true':'false'}"></option>
+	    </select>
+	  	<label for="pricePerDay"><b>Price Per Day</b></label>
+	    <input type="number" placeholder="Enter price Per Day" name="pricePerDay" required th:value="${room.pricePerDay!=0?room.pricePerDay:''}">
+	 
+	    <button type="submit" class="submitBtn" id="add-room-form-submit">Save Room</button>
+	 
+	  </div>
+	
+	  <div class="container" style="background-color:#f1f1f1">
+	     <a id="cancle-add-room" class="signUpbtn" href="">cancle</a>
+	  </div>
+</form>

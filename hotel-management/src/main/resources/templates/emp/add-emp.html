@@ -1,0 +1,40 @@
+<form id="add-emp-form" method="post" data-url="/emp" onsubmit="return false;">
+	  <div class="container">
+	  	<input type="hidden" th:if="${emp.empId!=null}" name="empId"  th:value="${emp.empId}" th:readonly="true">
+	  	<label for="name"><b>Name</b></label>
+	    <input type="text" placeholder="Enter Name" name="name"  required th:value="${emp.name!=null?emp.name:''}">
+	    <label for="phone"><b>phone</b></label>
+	    <input type="number" placeholder="Enter phone number" name="phone" required th:value="${emp.phone!=null?emp.phone:''}">
+	    <label for="email"><b>Email</b></label>
+	    <input type="email" placeholder="Enter email" name="email" required th:value="${emp.email!=0?emp.email:''}">
+	    <label for="gender"><b>Gender</b></label>
+	    <select name="gender" th:value="${emp.gender}">
+            <option  th:each="gender : ${genders}" th:text="${gender}" th:value="${gender}" th:selected="${emp.gender==gender?'true':'false'}"></option>
+	    </select>
+	    <label for="idProofType"><b>Id Proof Type</b></label>
+	    <select name="idProofType" th:value="${emp.idProofType}">
+            <option  th:each="idProofType : ${idProofTypes}" th:text="${idProofType}" th:value="${idProofType}" th:selected="${emp.idProofType==idProofType?'true':'false'}"></option>
+	    </select>
+	    <label for="idNumber"><b>Id Number</b></label>
+	    <input type="text" placeholder="Enter Id Number" name="idNumber"  required th:value="${emp.idNumber!=null?emp.idNumber:''}">
+	    <label for="postCode"><b>Post Code</b></label>
+	    <input type="number" placeholder="Enter Post Code" name="postCode" required th:value="${emp.postCode!=0?emp.postCode:''}">
+	 	 <label for="country"><b>Country</b></label>
+	    <select name="country" th:value="${emp.country}">
+            <option  th:each="country : ${countries}" th:text="${country}" th:value="${country}" th:selected="${emp.country==country?'true':'false'}"></option>
+	    </select>
+	 	<label for="address"><b>Address</b></label>
+	    <input type="text" placeholder="Enter Address" name="address" required th:value="${emp.address!=null?emp.address:''}">
+	    
+	    <label for="passwor"><b>if Reception Password</b></label>
+	    <input type="text" placeholder="Enter Password" id="add-emp-form-password" required>
+	    
+	    
+	    <button type="submit" class="submitBtn" id="add-emp-form-submit">Save Customer</button>
+	 
+	  </div>
+	
+	  <div class="container" style="background-color:#f1f1f1">
+	     <a id="cancle-add-room" class="signUpbtn" href="">cancle</a>
+	  </div>
+</form>

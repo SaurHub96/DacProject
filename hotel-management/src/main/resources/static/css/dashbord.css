@@ -1,0 +1,80 @@
+@charset "UTF-8";
+table {
+	text-align: -webkit-center;
+	color: white;
+	border:solid 2px black;
+}
+td {
+	text-align: center;
+	width: auto;
+}
+.myTableHead{
+	background: #000;
+}
+.delete-room, .delete-customer, .delete-booking, .delete-emp, .delete-item, .delet-order, #close-pay{
+	background: red;
+}
+.edit-customer, .edit-room, .booking-details, .view-booking{
+	background: blue;
+}
+
+#room-booking-div {
+	width: 100%;
+	height: 100%;
+	background: #666;
+	text-align: -webkit-center;
+	position: 0 0;
+}
+
+#room-booking-div input{
+	background: white;
+	color: black;
+	text-align: -webkit-center;
+}
+
+#pay-content-print{
+	position:fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	text-align: -webkit-center;
+	background: white;
+	color: black;
+	overflow: scroll;
+}
+#pay-content td{
+	background: white;
+	color: black;
+	text-align:left;
+}
+#pay-content th{
+	background: white;
+	color: black;
+	text-align:-webkit-center;
+}
+#pay-content table{	
+	width: 100%;
+}
+
+#pay-content-print button{	
+	width: 45%;
+}
+#pay-content-print .print-or-canlce{
+	position:absolute;
+	height:10%;
+	width: 20%;
+	left: 80%;
+	top: 3%;
+}
+#pay-content{
+	width: 50%;
+	border: solid black;
+}
+.logout {
+	position:absolute;
+	left:90%;
+	top:3%;
+	width:8%;
+	height:15%;
+}

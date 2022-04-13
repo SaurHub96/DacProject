@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hotel Management System</title>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="shortcut icon" href="#">
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body>
+	<div class="my-screen">
+	
+		<div class="header">
+			<div class="hotelName">
+				<div>Hotel Management System</div>
+			</div>
+			<div id="dashbordName">Sign In</div>
+			<div class="nav">
+				<button class="nav-menu" id="signin" data-name="Sign In">Sign
+					In</button>
+				<button class="nav-menu" id="about" data-name="About US">About</button>
+				<button class="nav-menu" id="contact" data-name="Contact US">Contact</button>
+			</div>
+		</div>
+		<div id="dashbord">
+			<form action="/login" method="post" id="login-form">
+				<div class="imgcontainer">
+					<img src="/img/user.png" alt="Avatar" class="avatar">
+				</div>
+				<div class="container">
+					<label for="uname"><b>Email Id</b></label> <input type="email"
+						placeholder="Enter Email Id" name="username" required> <label
+						for="psw"><b>Password</b></label> <input type="password"
+						placeholder="Enter Password" name="password" required>
+
+					<button type="submit">Login</button>
+
+				</div>
+
+				<div class="container" style="background-color: #f1f1f1">
+					Don't Have an Account <a id="signUpForm" class="signUpbtn" href="#">Sign
+						Up</a>
+				</div>
+			</form>
+
+			<form id="signup-form" method="post" data-url="/signup"
+				style="display: none;" onsubmit="return false;">
+				<div class="container">
+					<label for="uname"><b>Name</b></label> <input type="text"
+						placeholder="Enter First name" name="name" required> <label
+						for="uname"><b>Email Id</b></label> <input type="email"
+						placeholder="Enter Email Id" name="email" required> <label
+						for="psw"><b>Password</b></label> <input type="password"
+						placeholder="Enter Password" name="password" required> <label
+						for="uname"><b>Phone Number</b></label> <input type="number"
+						placeholder="Enter Phone" name="phone" required> <label
+						for="uname"><b>Hotel Name</b></label> <input type="text"
+						placeholder="Enter Hotel Name" name="hotelName" required>
+
+					<button type="submit" class="submitBtn" id="signup-form-submit">Sign
+						Up</button>
+
+				</div>
+
+				<div class="container" style="background-color: #f1f1f1">
+					If already Have Account <a id="loingForm" class="signUpbtn"
+						href="#">Login</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

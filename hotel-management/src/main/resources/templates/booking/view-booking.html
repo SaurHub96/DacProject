@@ -1,0 +1,16 @@
+<form id="update-booking-form" method="put" data-url="/booking" onsubmit="return false;">
+	<input th:if="${booking.paidDetails==null}" type="hidden" name="bookingId" th:value="${booking.bookingId}">
+	<label for="roomNumber">Customer Name</label>
+	<input type="text" th:value="${booking.customer.name}" disabled="disabled">
+	<label for="roomNumber">Room Number</label>
+	<input type="number" name="roomNumber" th:value="${booking.room.roomNumber}" required="required">
+	<label for="checkIn">Check In DateTime</label>
+	<input type="datetime-local" name="checkIn" th:value="${#dates.format(booking.checkIn, dateTimeFormat)}" th:max="${#dates.format(cuerrentDate, dateTimeFormat)}" required="required">
+	<label for="checkOut">Check Out DateTime</label>
+	<input th:if="${booking.checkOut!=null}" type="datetime-local" name="checkOut" th:value="${#dates.format(booking.checkOut, dateTimeFormat)}" th:min="${#dates.format(booking.checkIn, dateTimeFormat)}" th:max="${#dates.format(maxCheckOut, dateTimeFormat)}">
+	<input th:unless="${booking.checkOut!=null}" type="datetime-local" name="checkOut" th:min="${#dates.format(booking.checkIn, dateTimeFormat)}" th:max="${#dates.format(maxCheckOut, dateTimeFormat)}">
+	<label for="remark">Any Remark</label>
+	<input type="text" name="remark" th:value="${booking.remark}">
+	<button th:if="${booking.paidDetails==null}" type="submit" class="submitBtn" id="update-booking-form-submit" >Update Booking</button>
+</form>
+<input type="hidden" id="booking-customer-id" value="0">

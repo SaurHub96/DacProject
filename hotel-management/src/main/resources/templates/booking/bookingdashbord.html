@@ -1,0 +1,37 @@
+<table border="1">
+	<thead>
+		<tr>
+			<td colspan="2">Search By</td>
+			<td colspan="2">
+				<select th:if="${customerId==0}" name="type" id="booking-search-type" value="name">
+					<option value="name" selected="selected">Name</option>
+					<option value="roomNumber">Room Number</option>
+				</select>
+				<select th:if="${customerId!=0}" name="type" id="booking-search-type" value="name">
+					<option value="customerId" selected="selected">Customer Id</option>
+				</select>
+			</td>
+			<td colspan="2">
+				<input th:if="${customerId==0}" type="text" width="" id="booking-search" placeholder="...">
+				<input th:if="${customerId!=0}" type="text" width="" th:value="${customerId}" id="booking-search" placeholder="..." readonly="readonly"> 
+			</td>
+		</tr>
+		<tr class="myTableHead">
+			<td>Id</td>
+			<td>Room Number</td>
+			<td>Customer Name</td>
+			<td>CheckIn</td>
+			<td>CheckOut</td>
+			<td>Remark</td>
+			<td>Amount &#x20B9;</td>
+			<td colspan="3">Actions</td>
+		</tr>
+	</thead>
+	<tbody id="bookings">
+	</tbody>
+</table>
+<input th:value="${customerId}" type="hidden" width="" id="booking-customer-id" placeholder="...">
+<form id="delete-booking-form" method="delete" data-url="/booking" onsubmit="return false;" style="display: none;">
+	<input type="text" name="bookingId" id="delete-booking-form-booking-id" value="0">
+	<button type="button" class="submitBtn" id="delete-booking-form-submit" >Delete Booking</button>
+</form>

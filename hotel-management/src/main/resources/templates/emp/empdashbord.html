@@ -1,0 +1,39 @@
+
+<table border="1">
+	<thead>
+		<tr>
+			<td colspan="2">Search By</td>
+			<td colspan="2">
+				<select name="type" id="emp-search-type" value="name">
+					<option value="name" selected="selected">Name</option>
+				</select>
+			</td>
+			<td colspan="2">
+				<input type="text" width="" id="emp-search" placeholder="...">
+			</td>
+			<td colspan="3">
+				<button type="button" class="nav-menu" id="add-emp">Add New Employee</button>
+			</td>
+		</tr>
+		<tr class="myTableHead">
+			<td>Id</td>
+			<td>Name</td>
+			<td>Gender</td>
+			<td>Phone</td>
+			<td>Email</td>
+			<td>Post Code</td>
+			<td>Country</td>
+			<td>IdProofType</td>
+			<td>IdNumber</td>
+			<td>Address</td>
+			<td>Type</td>
+			<td colspan="3">Actions</td>
+		</tr>
+	</thead>
+	<tbody id="emps">
+	</tbody>
+</table>
+<form id="delete-emp-form" method="delete" data-url="/emp" onsubmit="return false;" style="display: none;">
+	<input type="text" name="empId" id="delete-emp-form-emp-id" value="0">
+	<button type="button" class="submitBtn" id="delete-emp-form-submit" >Delete Customer</button>
+</form>

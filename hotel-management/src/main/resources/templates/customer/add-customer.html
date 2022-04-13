@@ -1,0 +1,36 @@
+<form id="add-customer-form" method="post" data-url="/customer" onsubmit="return false;">
+	  <div class="container">
+	  	<input type="hidden" placeholder="New Customer" name="customerId"  th:value="${cust.customerId!=null?cust.customerId:0}" th:readonly="true">
+	  	<label for="name"><b>Name</b></label>
+	    <input type="text" placeholder="Enter Name" name="name"  required th:value="${cust.name!=null?cust.name:''}">
+	    <label for="phone"><b>phone</b></label>
+	    <input type="number" placeholder="Enter phone number" name="phone" required th:value="${cust.phone!=null?cust.phone:''}">
+	    <label for="email"><b>Email</b></label>
+	    <input type="email" placeholder="Enter email" name="email" required th:value="${cust.email!=0?cust.email:''}">
+	    <label for="gender"><b>Gender</b></label>
+	    <select name="gender" th:value="${cust.gender}">
+            <option  th:each="gender : ${genders}" th:text="${gender}" th:value="${gender}" th:selected="${cust.gender==gender?'true':'false'}"></option>
+	    </select>
+	    <label for="idProofType"><b>Id Proof Type</b></label>
+	    <select name="idProofType" th:value="${cust.idProofType}">
+            <option  th:each="idProofType : ${idProofTypes}" th:text="${idProofType}" th:value="${idProofType}" th:selected="${cust.idProofType==idProofType?'true':'false'}"></option>
+	    </select>
+	    <label for="idNumber"><b>Id Number</b></label>
+	    <input type="text" placeholder="Enter Id Number" name="idNumber"  required th:value="${cust.idNumber!=null?cust.idNumber:''}">
+	    <label for="postCode"><b>Post Code</b></label>
+	    <input type="number" placeholder="Enter Post Code" name="postCode" required th:value="${cust.postCode!=0?cust.postCode:''}">
+	 	 <label for="country"><b>Country</b></label>
+	    <select name="country" th:value="${cust.country}">
+            <option  th:each="country : ${countries}" th:text="${country}" th:value="${country}" th:selected="${cust.country==country?'true':'false'}"></option>
+	    </select>
+	 	<label for="address"><b>Address</b></label>
+	    <input type="text" placeholder="Enter Address" name="address" required th:value="${cust.address!=0?cust.address:''}">
+	 
+	    <button type="submit" class="submitBtn" id="add-customer-form-submit">Save Customer</button>
+	 
+	  </div>
+	
+	  <div class="container" style="background-color:#f1f1f1">
+	     <a id="cancle-add-room" class="signUpbtn" href="">cancle</a>
+	  </div>
+</form>

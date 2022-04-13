@@ -1,0 +1,14 @@
+<tr  th:each="booking : ${bookings}">
+	<td th:text="${booking.bookingId}"></td>
+	<td th:text="${booking.room.roomNumber}"></td>
+	<td th:text="${booking.customer.name}"></td>
+	<td th:text="${#dates.format(booking.checkIn, 'dd-MMM-YYYY HH:mm:ss')}"></td>
+	<td th:text="${#dates.format(booking.checkOut, 'dd-MMM-YYYY HH:mm:ss')}"></td>
+	<td th:text="${booking.remark}"></td>
+	<td th:text="${booking.amount==null?'':booking.amount+'&#x20B9;'}"></td>
+	<td ><button th:data-booking-id="${booking.bookingId}" class="view-booking">View</button></td>
+	<td ><button th:data-booking-id="${booking.bookingId}" class="order-details">Orders</button></td>
+	<td th:if="${booking.paidDetails==null}"><button th:data-booking-id="${booking.bookingId}" class="delete-booking">Delete</button></td>
+	<td th:if="${booking.amount!=null && booking.paidDetails==null}"><button th:data-booking-id="${booking.bookingId}" class="pay-booking">Pay Bill</button></td>
+	<td colspan="2" th:if="${booking.amount!=null && booking.paidDetails!=null}"><button th:data-booking-id="${booking.bookingId}" class="pay-booking">Bill Paid</button></td>
+</tr>

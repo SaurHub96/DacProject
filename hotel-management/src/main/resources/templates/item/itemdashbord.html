@@ -1,0 +1,31 @@
+<table border="1">
+	<thead>
+		<tr>
+			<td >Search By</td>
+			<td >
+				<select name="type" id="item-search-type" value="name">
+					<option value="itemName" selected="selected">Item Name</option>
+				</select>
+			</td>
+			<td >
+				<input type="text" width="" id="item-search" placeholder="...">
+			</td>
+			<td >
+				<button type="button" class="nav-menu" id="add-item">Add New Item</button>
+			</td>
+		</tr>
+		<tr class="myTableHead">
+			<td>Item Id</td>
+			<td>Item Name</td>
+			<td>Price &#x20B9;</td>
+			<td colspan="3">Actions</td>
+		</tr>
+	</thead>
+	<tbody id="items">
+		
+	</tbody>
+</table>
+<form id="delete-item-form" method="delete" data-url="/item" onsubmit="return false;" style="display: none;">
+	<input type="text" name="itemId" id="delete-item-form-item-id" value="0">
+	<button type="button" class="submitBtn" id="delete-item-form-submit" >Delete item</button>
+</form>

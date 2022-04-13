@@ -1,0 +1,15 @@
+<tr th:if="${bookingOrders!=null}" th:each="od : ${bookingOrders}">
+	<td th:text="${od.orderId}"></td>
+	<td th:text="${od.orderItem.itemName}"></td>
+	<td th:text="${od.count}"></td>
+	<td th:text="${od.amount}"></td>
+	<td th:text="${#dates.format(od.entryDate, 'dd-MMM-YYYY HH:mm:ss')}"></td>
+	<td th:text="${od.employee!=null?od.employee.name:''}"></td>
+	<td th:text="${od.remark}"></td>
+	<td th:if="${booking.paidDetails==null}"><button th:data-order-id="${od.orderId}" class="edit-order">Edit</button> </td>
+	<td th:if="${booking.paidDetails==null}"><button th:data-order-id="${od.orderId}" class="delet-order">Delete</button> </td>
+	<td th:if="${booking.paidDetails!=null}">Payment Complite</td>
+</tr>
+<tr th:if="${bookingOrders==null}">
+	<td colspan="8"> No Order for this booking</td>
+</tr>

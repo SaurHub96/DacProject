@@ -1,0 +1,12 @@
+<tr  th:each="room : ${rooms}">
+	<td th:text="${room.roomNumber}" th:id="${'roomNumber_'+room.roomId}"></td>
+	<td th:text="${room.floorNumber}" th:id="${'floorNumber_'+room.roomId}"></td>
+	<td th:text="${room.roomType}" th:id="${'roomType_'+room.roomId}"></td>
+	<td th:text="${room.roomStatus}"></td>
+	<td th:text="${room.pricePerDay}" th:id="${'pricePerDay_'+room.roomId}"></td>
+	
+	<td th:if="${customerId==null}"><button th:data-room-id="${room.roomId}" class="edit-room">Edit</button></td>
+	<td th:if="${customerId==null && room.roomStatus!=room.roomStatus.Booked}"><button th:data-room-id="${room.roomId}" class="delete-room">Delete</button></td>
+	<td th:if="${customerId==null && room.roomStatus==room.roomStatus.Booked}">Delete</td>
+	<td th:if="${customerId!=null}"><button th:data-room-id="${room.roomId}" th:data-customer-id="${customerId}" class="select-room">Select</button></td>
+</tr>

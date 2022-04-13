@@ -1,0 +1,46 @@
+<table border="1">
+	<thead>
+		<tr th:if="${bookings!=null || booking!=null}">
+			<td >Search By</td>
+			<td >
+				<select name="type" id="item-orders-type" value="name">
+					<option value="bookingId" selected="selected">Room Number</option>
+				</select>
+			</td>
+			<td th:if="${booking==null}">
+				<select id="orders-search" >
+					<option th:each="booking : ${bookings}" th:value="${booking.bookingId}" th:text="${booking.room.roomNumber}" ></option>
+				</select>
+			</td>
+			<td th:if="${booking!=null}">
+				<select id="orders-search" >
+					<option th:value="${booking.bookingId}" th:text="${booking.room.roomNumber}" selected="selected"></option>
+				</select>
+			</td>
+			<td th:if="${booking==null || booking.paidDetails==null}">
+				<button type="button" class="nav-menu" id="add-orders">Add New Order</button>
+			</td>
+		</tr>
+		<tr th:if="${bookings==null && booking==null}">
+			<td colspan="8">Current there is no booking available</td>
+		</tr>
+		<tr th:if="${bookings!=null || booking!=null}" class="myTableHead">
+			<td>Order No.</td>
+			<td>Item</td>
+			<td>Count</td>
+			<td>Amount &#x20B9;</td>
+			<td>Time</td>
+			<td>Employee Name</td>
+			<td>Remark</td>
+			<td colspan="3">Actions</td>
+		</tr>
+	</thead>
+	<tbody id="orders">
+		
+	</tbody>
+</table>
+
+<form id="delete-order-form" method="delete" data-url="/orders" onsubmit="return false;" style="display: none;">
+	<input type="text" name="orderId" id="delete-orders-form-order-id" value="0">
+	<button type="button" class="submitBtn" id="delete-order-form-submit" >Delete Order</button>
+</form>

@@ -1,0 +1,121 @@
+<form id="update-booking-form" method="put" data-url="/booking"
+	onsubmit="return false;">
+	<input type="hidden" name="bookingId" th:value="${booking.bookingId}">
+	<label for="roomNumber">Customer Name</label> <input type="text"
+		th:value="${booking.customer.name}" readonly="readonly"> <label
+		for="roomNumber">Room Number</label> <input type="number"
+		th:value="${booking.room.roomNumber}" required="required"
+		readonly="readonly"> <label for="amonut">Amount</label> <input
+		type="number" th:value="${booking.amount}" required="required"
+		readonly="readonly"> <label for="paidBy">Paid By</label> <select
+		name="paidBy" required="required">
+		<option th:each="paidBy : ${paidBys}"
+			th:if="${paidBy!=paidBys.get(0)}" th:text="${paidBy}"
+			th:value="${paidBy}" th:selected="${paidBy=='Cash'?'true':'false'}"></option>
+	</select> <label for="paidDetails">Paid Details</label> <input type="text"
+		name="paidDetails" >
+	<button id="print-pay-btn">Print Pay Slip</button>
+	<button th:if="${booking.paidDetails==null}" type="submit"
+		class="submitBtn" id="update-booking-form-submit">Payment Complete</button>
+</form>
+<div id="pay-slip" style="display: none;">
+	<div id="pay-content">
+		<div style="text-align: -webkit-center;">
+			
+			<table border="1" style="width: 100%">
+				<tr bordercolor="white">
+					<th style="width: 100%" colspan="3"><h3 th:text="${booking.room.user.hotelName}"></h3>
+						<div style="text-align: right; font-size: 12px;">
+							<span th:if="${booking.paymentDate!=null}" th:text="${#dates.format(booking.paymentDate, 'dd-MMM-YYYY HH:mm:ss')}"></span>
+							<span th:if="${booking.paymentDate==null}" th:text="${#dates.format(currentTime, 'dd-MMM-YYYY HH:mm:ss')}"></span>
+						</div>
+					</th>
+				</tr>
+				<tr>
+					<td style="width: 50%">Customer Id</td>
+					<th th:text="${booking.customer.customerId}"></th>
+				</tr>
+				<tr>
+					<td style="width: 50%">Customer Name</td>
+					<th th:text="${booking.customer.name}"></th>
+				</tr>
+				<tr>
+					<td style="width: 50%">Room Number</td>
+					<th th:text="${booking.room.roomNumber}"></th>
+				</tr>
+			<tr>
+				<td style="width: 50%">Price per Day</td>
+				<th style="width: 50%; text-align: right;" th:text="${booking.room.pricePerDay}"></th>
+				
+			</tr>
+			<tr>
+				<td style="width: 50%">Check In</td>
+				<th style="width: 50%; text-align: right;" th:text="${#dates.format(booking.checkIn, 'dd-MMM-YYYY HH:mm:ss')}"></th>
+				
+			</tr>
+			<tr>
+				<td style="width: 50%">Check Out</td>
+				<th style="width: 50%; text-align: right;"th:text="${#dates.format(booking.checkOut, 'dd-MMM-YYYY HH:mm:ss')}"></th>
+				
+			</tr>
+			<tr>
+				<td style="width: 50%">Days</td>
+				<th style="width: 50%; text-align: right;" th:text="${roomTime.day}"></th>
+			</tr>
+			<tr>
+				<td style="width: 50%" >Hours</td>
+				<th style="width: 50%; text-align: right;" th:text="${roomTime.hour}"></th>
+				
+			</tr>
+			<tr>
+				<td style="width: 50%">Room Amount</td>
+				<th style="width: 50%; text-align: right;" th:text="${roomTotal}"></th>
+			</tr>
+		</table>
+		<br th:if="${orders!=null}">
+		<br th:if="${orders!=null}">
+		<p th:if="${orders==null}">No Food/Item Orders</p>
+		<table th:if="${orders!=null}" border="1"  style="width: 100%">
+			<tr>
+					<th colspan="3"><h3>Food/Item Orders</h3></th>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<th>Count</th>
+				<th>Amount</th>
+			</tr>
+			<tr th:each="od : ${orders}">
+				<td style="width: 33%" th:text="${od.orderItem.itemName}"></td>
+				<th style="width: 33%" th:text="${od.count}"></th>
+				<th style="width: 33%; text-align: right;" th:text="${od.amount}"></th>
+			</tr>
+			<tr>
+				<th style="width: 50%" colspan="2">Order Total</th>
+				<th style="width: 50%; text-align: right;" th:text="${orderTotal}"></th>
+				
+			</tr>
+		</table>
+		<br>
+		<br>
+		<table border="1"  style="width: 100%">
+			<tr>
+					<th colspan="3">-----Thank You-----</th>
+			</tr>
+			<tr>
+				<th style="width: 50%" >Total Pay Amount</th>
+				<th style="width: 50%" th:text="${booking.amount}" ></th>
+			</tr>
+			<tr>
+				<th colspan="2" style="width: 100%" th:text="${finalTotalInWord}" ></th>
+			</tr>
+			
+		</table>
+		</div>
+	</div>
+	<div class="print-or-canlce">
+		<button id="print-pay">Print</button>
+		<button id="close-pay">Close</button>
+	</div>
+	
+</div>
+<input type="hidden" id="booking-customer-id" value="0">

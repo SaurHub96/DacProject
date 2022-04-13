@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title th:text="${user.hotelName}"></title>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/dashbord.css">
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/dashbord.js"></script>
+<link rel="shortcut icon" href="#">
+</head>
+<body>
+	<div class="header">
+		<div class="hotelName">
+			<div th:text="${user.hotelName}"></div>
+		</div>
+		<div id="dashbordName">Customer Dashboard</div>
+		<div class="nav">
+			<button th:if="${user.getRole()==user.getRole().RECEPTION}" class="nav-menu" id="customer-dashbord" data-name="Customer Dashboard">Customers</button>
+			<button th:if="${user.getRole()==user.getRole().RECEPTION}" class="nav-menu" id="booking-dashbord" data-name="Booking Dashboard">Bookings</button>
+			<button th:if="${user.getRole()==user.getRole().RECEPTION}" class="nav-menu" id="orders-dashbord" data-name="Orders Dashboard">Orders</button>
+			
+			<button th:if="${user.getRole()==user.getRole().ADMIN}" class="nav-menu" id="room-dashbord" data-name="Room Dashboard">Rooms</button>
+			<button th:if="${user.getRole()==user.getRole().ADMIN}" class="nav-menu" id="item-dashbord" data-name="Foods/Items Dashboard">Foods/Items</button>
+			<button th:if="${user.getRole()==user.getRole().ADMIN}" class="nav-menu" id="employee-dashbord" data-name="Employees Dashboard">Employees</button>
+			
+		</div>
+		<a  class="logout" href="/logout" id="logout">
+			<img alt="Logout" width="100%" height="100%" src="/img/logout.png">
+		</a>
+	</div>
+	<div id="dashbord">
+			
+	</div>
+	<div  id="pay-content-print" style="display: none;">
+	</div>
+</body>
+</html>

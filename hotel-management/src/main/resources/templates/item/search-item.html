@@ -1,0 +1,10 @@
+<tr th:if="${orderItems!=null}" th:each="item : ${orderItems}">
+	<td th:text="${item.itemId}"></td>
+	<td th:text="${item.itemName}"></td>
+	<td th:text="${item.price}"></td>
+	<td><button th:data-item-id="${item.itemId}" class="edit-item">Edit</button> </td>
+	<td><button th:data-item-id="${item.itemId}" class="delete-item">Delete</button> </td>
+</tr>
+<tr th:if="${orderItems==null}">
+	<td colspan="5">Item Not Found</td>
+</tr>

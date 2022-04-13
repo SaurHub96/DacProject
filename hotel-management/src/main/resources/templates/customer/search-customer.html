@@ -1,0 +1,16 @@
+<tr  th:each="customer : ${customers}">
+	<td th:text="${customer.customerId}"></td>
+	<td th:text="${customer.name}"></td>
+	<td th:text="${customer.gender}"></td>
+	<td th:text="${customer.phone}"></td>
+	<td th:text="${customer.email}"></td>
+	<td th:text="${customer.postCode}"></td>
+	<td th:text="${customer.country}"></td>
+	<td th:text="${customer.idProofType}"></td>
+	<td th:text="${customer.idNumber}"></td>
+	<td th:text="${customer.address}"></td>
+	<td th:if="${customer.customerStatus!=bookedStatus}" ><button th:data-customer-id="${customer.customerId}" class="book-customer">Book</button></td>
+	<td th:unless="${customer.customerStatus!=bookedStatus}" ><button th:data-customer-id="${customer.customerId}" class="booking-details">View</button></td>
+	<td><button th:data-customer-id="${customer.customerId}" class="edit-customer">Edit</button></td>
+	<td th:if="${customer.customerStatus!=bookedStatus}" ><button th:data-customer-id="${customer.customerId}" class="delete-customer">Delete</button></td>
+</tr>
